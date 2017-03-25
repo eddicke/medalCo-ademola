@@ -161,7 +161,21 @@ var megabotA;
    socket.emit('power', 'shoot');
    }
      
-      
+      ////picked point evt
+     scene.onPointerDown = function(evt, pickResult){
+	    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+		    if(pickResult.hit){
+		    //****do soomething here****//
+		    }
+		    socket.emit('power', pickResult.pickedPoint.x)
+	    }
+	    //pointer-up idle state!
+	    scene.onPointerUp = function(){
+		   
+		    socket.emit('power', 'stop')
+	    }
+    
+   ///////////********
     }
       
           
@@ -202,9 +216,32 @@ var megabotA;
 	         socket.on('player2', function(msg){
          megabotB.setEnabled(true)
 	      });
-		 socket.on('player2', function(msg){
-         megabotB.setEnabled(true)
+		///////player1////////
+		socket.on('state', function(msg){
+         scene.beginAnimation(skeletons[0], 10,30, true, 2);
+    //walk forward
+    if(msg > megabotA.position.x){
+    var go = setInterval(function(){
+megabotA.position.x += 0.5;
+    }, 100)
+    }
+    //walk backward
+    if(msg < megabotA.position.x){
+     var back = setInterval(function(){
+megabotA.position.x -= 0.5;
+    },100)
+      }
+			 //idle state
+  socket.on('power2', function(msg){
+        
+     clearInterval(go)
+     clearInterval(back)
+     scene.beginAnimation(skeletons[0], 0,150, true, 2);
+		 
+		 })
+
 	      });
+		 ///////////player2///////////
 		 socket.on('state', function(msg){
          scene.beginAnimation(skeletons[0], 10,30, true, 2);
     //walk forward
