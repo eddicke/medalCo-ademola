@@ -80,12 +80,16 @@ var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
       $(function () {
         var socket = io();
         //checking for online users
+	      var online = 0;
          socket.on('connect', function() {
   socket.emit('login', '[online buddy!]');
           // console.log('online');
           socket.on('login', function(msg){
              console.log(msg);
+		  online++
             $('#messages').append($('<li>').text(msg));
+		   $('#messages').append($('<li>').text(online));
+		  
              //document.getElementById("myBtn").innerHTML = 'nice bruh';
             
              document.getElementById('login/msg').innerHTML = 'Enter Token!';
