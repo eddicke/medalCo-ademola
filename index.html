@@ -156,11 +156,7 @@ var megabotA;
     }
     }
       socket.emit('hunts', 'online');
-    
-   scene.onPointerDown = function(){
-   socket.emit('power', 'shoot');
-   }
-     
+   
       ////picked point evt
      scene.onPointerDown = function(evt, pickResult){
 	    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
