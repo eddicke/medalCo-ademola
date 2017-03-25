@@ -83,7 +83,8 @@ var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
 	      var online = 0;
          socket.on('connect', function() {
   socket.emit('login', '[online buddy!]');
-	// console.log('online');
+		 alert("use this token to play:<br> 'Babylonjs'</br>")
+// console.log('online');
           socket.on('login', function(msg){
              console.log(msg);
 		  online++
@@ -94,9 +95,7 @@ var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
              document.getElementById('login/msg').innerHTML = 'Enter Token!';
 		 
           })
-         if(online > 1){
-	 alert("ok');
- }
+      
 });
 	      ///////player2/////////
 	      //megabotB
@@ -150,7 +149,7 @@ var megabotA;
         })
 		////player1-auth/////		
          $("#m").keyup(function(e) { 
-    if (this.value == 'adem'){
+    if (this.value == 'Babylonjs'){
         $(this).css('backgroundColor','green');
          window.onkeyup = function(e) {
     var key = e.keyCode ? e.keyCode : e.which;
