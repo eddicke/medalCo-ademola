@@ -214,6 +214,13 @@ megabotB.position.x += 0.5;
 megabotB.position.x -= 0.5;
     },100)
       }
+			 //idle state
+ scene.onPointerUp = function(evt, pickResult){
+     clearInterval(go)
+     clearInterval(back)
+     scene.beginAnimation(skeletons[0], 0,150, true, 2);
+
+}
 	      });
 //***//HALT!!
 	});
