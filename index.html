@@ -209,11 +209,11 @@ var megabotA;
 	      socket.on('hunts', function(msg){
          megabotA.setEnabled(true)
 		      //global-collision
-		      setInterval(function(){
-		      if(megabotA.intersectsPoint(new BABYLON.Vector3(megabotB.position.x, 0, 0))){
-			 megabotB.dispose();
-			 }
-		      });
+		       scene.registerBeforeRender(function(){
+if(megabotB.intersectsMesh(megabotA)){
+megabotA.dispose()
+}
+       })
 	      });
 	         socket.on('player2', function(msg){
          megabotB.setEnabled(true)
