@@ -83,7 +83,7 @@ var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
 	      var online = 0;
          socket.on('connect', function() {
   socket.emit('login', '[online buddy!]');
-		 alert("use this token to play:<br> 'Babylonjs'</br>")
+		 alert("use this token to play:   Babylonjs")
 // console.log('online');
           socket.on('login', function(msg){
              console.log(msg);
