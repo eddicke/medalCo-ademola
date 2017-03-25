@@ -21,6 +21,10 @@ io.on('connection', function(socket){
    socket.on('power', function(hunts){
     io.emit('power', hunts);
   });
+  //power up2
+   socket.on('power2', function(power){
+    io.emit('power2', power);
+  });
   //webcam
 socket.on('webcam', function(webcam){
     io.emit('webcam', webcam);
