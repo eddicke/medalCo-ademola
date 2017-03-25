@@ -22,11 +22,13 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+    
+      //////////server side//////////////////////////////////
       $(function () {
         var socket = io();
         //checking for online users
          socket.on('connect', function() {
-  socket.emit('login', 'online buddy');
+  socket.emit('login', '[online buddy!]');
           // console.log('online');
           socket.on('login', function(msg){
              console.log(msg);
@@ -37,6 +39,32 @@
           })
          
 });
+        //login authentication
+         //////////////////player1///////////////
+       
+       $("#m").keyup(function(e) { 
+    if (this.value == 'adem'){
+        $(this).css('backgroundColor','green');
+         window.onkeyup = function(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+    
+    if (key == 38) {
+        socket.emit('player1', 'moveup');
+    }else if (key == 40) {
+         socket.emit('player1-1', 'movedown');
+    }
+    }
+      socket.emit('hunts', 'online');
+    
+   scene.onPointerDown = function(){
+   socket.emit('power', 'shoot');
+   }
+     
+      
+    }
+      
+          
+})
         //chat
         $('form').submit(function(){
           socket.emit('chat message', $('#m').val());
@@ -48,6 +76,8 @@
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
+      
+      //////////////////////server side///////////////////////
     </script>
   </body>
 </html>
