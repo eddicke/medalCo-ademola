@@ -220,16 +220,16 @@ megabotB.position.x -= 0.5;
     },100)
       }
 			 //idle state
- 
-
-	      });
-		 socket.on('state2', function(msg){
+  socket.on('state2', function(msg){
         
      clearInterval(go)
      clearInterval(back)
      scene.beginAnimation(skeletons[0], 0,150, true, 2);
 		 
 		 })
+
+	      });
+		
 //***//HALT!!
 	});
 	         }) 
