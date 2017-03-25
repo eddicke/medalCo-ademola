@@ -178,6 +178,11 @@ var megabotA;
 		    }
 		    socket.emit('state', pickResult.pickedPoint.x)
 	    }
+	    //pointer-up idle state!
+	    scene.onPointerUp = function(evt, pickResult){
+		    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
+		    socket.emit('state', pickResult)
+	    }
     }
 		 })
         //chat
@@ -215,12 +220,11 @@ megabotB.position.x -= 0.5;
     },100)
       }
 			 //idle state
- scene.onPointerUp = function(evt, pickResult){
+ 
      clearInterval(go)
      clearInterval(back)
      scene.beginAnimation(skeletons[0], 0,150, true, 2);
 
-}
 	      });
 //***//HALT!!
 	});
