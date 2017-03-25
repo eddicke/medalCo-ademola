@@ -92,6 +92,29 @@ var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
           })
          
 });
+	      ///////player2/////////
+	      //megabotB
+ var megabotB;
+	var skeleton;
+    var offset = 4
+	BABYLON.SceneLoader.ImportMesh("", "https://raw.githubusercontent.com/eddicke/wevgl/master/", "megabot.babylon", scene, function (newMeshes, particleSystems, skeletons) {
+	    megabotB = newMeshes[0];
+		skeleton = skeletons[0];
+	//	console.log(skeleton.bones)
+	    megabotB.rotation.y = 3/2 *Math.PI;
+		megabotB.scaling = new BABYLON.Vector3(0.8,0.8,0.8);
+	    megabotB.position = new BABYLON.Vector3(0, 0, 3);
+		megabotB.setEnabled(false)
+		skeleton.position = new BABYLON.Vector3(0, 0, 0);
+		skeleton.scaling = new BABYLON.Vector3(0.02,0.02,0.02);
+					 scene.beginAnimation(skeletons[0], 0, 150, true, 2);
+		sphere.attachToBone(skeleton.bones[4], megabotB);
+        var pos = sphere.position.z;
+		sphere.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
+		sphere.rotationQuaternion = BABYLON.Quaternion.Identity();
+        var bone = skeleton.bones[4];
+        var speed = 0.05
+	})
         //login authentication
          //////////////////player1///////////////
         //player1
@@ -119,6 +142,7 @@ var megabotA;
 
             
         })
+		////player1-auth/////		
          $("#m").keyup(function(e) { 
     if (this.value == 'adem'){
         $(this).css('backgroundColor','green');
@@ -142,7 +166,13 @@ var megabotA;
       
           
 })
-      
+  
+		////player2-auth/////		
+         $("#m").keyup(function(e) { 
+    if (this.value == 'hunts'){
+	 socket.emit('player2', 'player2');   
+	    }
+		 })
         //chat
         $('form').submit(function(){
           socket.emit('chat message', $('#m').val());
@@ -153,12 +183,15 @@ var megabotA;
           $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
-	 /////////////--////////     
+	 /////////////-evt-////////     
 	      socket.on('hunts', function(msg){
          megabotA.setEnabled(true)
 	      });
-	      
-      });
+	         socket.on('player2', function(msg){
+         megabotB.setEnabled(true)
+	      });
+//***//
+	});
 	         }) 
  
     // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
