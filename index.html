@@ -83,8 +83,7 @@ var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
 	      var online = 0;
          socket.on('connect', function() {
   socket.emit('login', '[online buddy!]');
-	   $('#messages').append($('<li>').text(online);	 
-          // console.log('online');
+	// console.log('online');
           socket.on('login', function(msg){
              console.log(msg);
 		  online++
