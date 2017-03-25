@@ -44,9 +44,13 @@ socket.on('webcam', function(webcam){
    socket.on('player1', function(hunts){
     io.emit('player1', hunts);
   });
-  //state
+  //state-1
   socket.on('state', function(stats){
     io.emit('state', stats);
+  });
+   //state-2
+  socket.on('state2', function(stats){
+    io.emit('state2', stats);
   });
   //login
   socket.on('login', function(login){
