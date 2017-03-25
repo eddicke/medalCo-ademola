@@ -156,7 +156,7 @@ var megabotA;
     }
     }
       socket.emit('hunts', 'online');
-   
+   camera.lockedTarget = megabotA;
       ////picked point evt
      scene.onPointerDown = function(evt, pickResult){
 	    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
@@ -181,6 +181,7 @@ var megabotA;
          $("#m").keyup(function(e) { 
     if (this.value == 'hunts'){
 	 socket.emit('player2', 'player2');  
+	    camera.lockedTarget = megabotB;
 	    scene.onPointerDown = function(evt, pickResult){
 	    var pickResult = scene.pick(scene.pointerX, scene.pointerY);
 		    if(pickResult.hit){
@@ -208,6 +209,7 @@ var megabotA;
 	 /////////////-evt-////////     
 	      socket.on('hunts', function(msg){
          megabotA.setEnabled(true)
+		      
 		      //global-collision
 		       scene.registerBeforeRender(function(){
 if(megabotB.intersectsMesh(megabotA)){
