@@ -210,7 +210,7 @@ var megabotA;
          megabotA.setEnabled(true)
 		      //global-collision
 		      setInterval(function(){
-		      if(megabotA.intersectsMesh(megabotB)){
+		      if(megabotA.intersectsPoint(new BABYLON.Vector3(megabotB.position.x, 0, 0))){
 			 megabotB.dispose();
 			 }
 		      });
