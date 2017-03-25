@@ -48,6 +48,10 @@ socket.on('webcam', function(webcam){
   socket.on('state', function(stats){
     io.emit('state', stats);
   });
+  //login
+  socket.on('login', function(login){
+    io.emit('login', login);
+  });
   //move down
   socket.on('player1-1', function(down){
     io.emit('player1-1', down);
