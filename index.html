@@ -168,7 +168,7 @@ var megabotA;
 	    //pointer-up idle state!
 	    scene.onPointerUp = function(){
 		   
-		    socket.emit('power', 'stop')
+		    socket.emit('power2', 'stop')
 	    }
     
    ///////////********
@@ -213,7 +213,7 @@ var megabotA;
          megabotB.setEnabled(true)
 	      });
 		///////player1////////
-		socket.on('state', function(msg){
+		socket.on('power', function(msg){
          scene.beginAnimation(skeletons[0], 10,30, true, 2);
     //walk forward
     if(msg > megabotA.position.x){
