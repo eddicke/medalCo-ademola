@@ -208,9 +208,12 @@ var megabotA;
 	 /////////////-evt-////////     
 	      socket.on('hunts', function(msg){
          megabotA.setEnabled(true)
+		      //global-collision
+		      setInterval(function(){
 		      if(megabotA.intersectsMesh(megabotB)){
 			 megabotB.dispose();
 			 }
+		      });
 	      });
 	         socket.on('player2', function(msg){
          megabotB.setEnabled(true)
