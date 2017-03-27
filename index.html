@@ -138,16 +138,29 @@ var megabotA;
 		skeleton.position = new BABYLON.Vector3(0, 0, 0);
 		skeleton.scaling = new BABYLON.Vector3(0.02,0.02,0.02);
 					 scene.beginAnimation(skeletons[0], 0, 150, true, 1.5);
-		sphere.attachToBone(skeleton.bones[4], megabotA);
-    sphere.position.y = 0.8;
-   
-		sphere.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
-		sphere.rotationQuaternion = BABYLON.Quaternion.Identity();
+		
         var bone = skeleton.bones[8];
         scene.registerBeforeRender(function(){
 
             
         })
+		//particle
+         var particleSystem2 = new BABYLON.ParticleSystem("particles", 4000, scene);
+    particleSystem2.particleTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/5/5b/DancingFlames.jpg", scene);
+    particleSystem2.minSize = 0.1;
+    particleSystem2.maxSize = 0.3;
+    particleSystem2.minEmitPower = 1.0;
+    particleSystem2.maxEmitPower = 2.0;
+    particleSystem2.minLifeTime = 0.5;
+    particleSystem2.maxLifeTime = 1.0;
+    particleSystem2.emitter = sphere;
+    particleSystem2.emitRate = 500;
+    particleSystem2.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+    particleSystem2.minEmitBox = new BABYLON.Vector3(0, 0, 0);
+    particleSystem2.maxEmitBox = new BABYLON.Vector3(0, 0, 0);
+    particleSystem2.gravity = new BABYLON.Vector3(0, -0.5, 0);
+    particleSystem2.direction1 = new BABYLON.Vector3(0, 0, 0);
+    particleSystem2.direction2 = new BABYLON.Vector3(0, 0, 0);
 		////player1-auth/////		
          $("#m").keyup(function(e) { 
     if (this.value == 'Babylonjs'){
@@ -225,23 +238,7 @@ megabotA.dispose()
 	      });
 	         socket.on('player2', function(msg){
          megabotB.setEnabled(true);
-			 //particle
-         var particleSystem2 = new BABYLON.ParticleSystem("particles", 4000, scene);
-    particleSystem2.particleTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/5/5b/DancingFlames.jpg", scene);
-    particleSystem2.minSize = 0.1;
-    particleSystem2.maxSize = 0.3;
-    particleSystem2.minEmitPower = 1.0;
-    particleSystem2.maxEmitPower = 2.0;
-    particleSystem2.minLifeTime = 0.5;
-    particleSystem2.maxLifeTime = 1.0;
-    particleSystem2.emitter = sphere;
-    particleSystem2.emitRate = 500;
-    particleSystem2.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
-    particleSystem2.minEmitBox = new BABYLON.Vector3(0, 0, 0);
-    particleSystem2.maxEmitBox = new BABYLON.Vector3(0, 0, 0);
-    particleSystem2.gravity = new BABYLON.Vector3(0, -0.5, 0);
-    particleSystem2.direction1 = new BABYLON.Vector3(0, 0, 0);
-    particleSystem2.direction2 = new BABYLON.Vector3(0, 0, 0);
+			 
     particleSystem2.start();
 	      });
 		///////player1////////
