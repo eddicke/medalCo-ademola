@@ -161,7 +161,24 @@ var groundMat = new BABYLON.StandardMaterial("texturePlane", scene);
      sphere.position.y = 0.8;
 		sphere.scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
 		sphere.rotationQuaternion = BABYLON.Quaternion.Identity();
-		
+		//particle
+         var particleSystem2 = new BABYLON.ParticleSystem("particles", 4000, scene);
+    particleSystem2.particleTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/5/5b/DancingFlames.jpg", scene);
+    particleSystem2.minSize = 0.1;
+    particleSystem2.maxSize = 0.3;
+    particleSystem2.minEmitPower = 1.0;
+    particleSystem2.maxEmitPower = 2.0;
+    particleSystem2.minLifeTime = 0.5;
+    particleSystem2.maxLifeTime = 1.0;
+    particleSystem2.emitter = sphere;
+    particleSystem2.emitRate = 500;
+    particleSystem2.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+    particleSystem2.minEmitBox = new BABYLON.Vector3(0, 0, 0);
+    particleSystem2.maxEmitBox = new BABYLON.Vector3(0, 0, 0);
+    particleSystem2.gravity = new BABYLON.Vector3(0, -0.5, 0);
+    particleSystem2.direction1 = new BABYLON.Vector3(0, 0, 0);
+    particleSystem2.direction2 = new BABYLON.Vector3(0, 0, 0);
+		particleSystem2.start();
         var bone = skeleton.bones[4];
         var speed = 0.05
 	})
