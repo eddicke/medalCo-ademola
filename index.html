@@ -93,7 +93,7 @@ for(var i = 0; i<5; i++){
 var cylinder = BABYLON.Mesh.CreateCylinder("cylinder", 10, 3, 3, 16, 1, scene, false);
 cylinder.scaling.x = 0.4
 cylinder.scaling.z = 0.4
-cylinder.position.x = 5
+cylinder.position.x = 6.5
 cylinder.position.z = (6 - i)*5
 cylinder.position.y = 3
 pillars.push(cylinder)
@@ -106,7 +106,7 @@ for(var i = 0; i<5; i++){
 var cylinder2 = BABYLON.Mesh.CreateCylinder("cylinder", 10, 3, 3, 16, 1, scene, false);
 cylinder2.scaling.x = 0.4
 cylinder2.scaling.z = 0.4
-cylinder2.position.x = -5
+cylinder2.position.x = -6.5
 cylinder2.position.z = (6 - i)*5
 cylinder2.position.y = 3
 pillars2.push(cylinder2)
@@ -205,6 +205,7 @@ var megabotA;
     particleSystem2.gravity = new BABYLON.Vector3(0, -0.5, 0);
     particleSystem2.direction1 = new BABYLON.Vector3(0, 0, 0);
     particleSystem2.direction2 = new BABYLON.Vector3(0, 0, 0);
+		particleSystem2.start();
 		////player1-auth/////		
          $("#m").keyup(function(e) { 
     if (this.value == 'Babylonjs'){
